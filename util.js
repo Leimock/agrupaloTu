@@ -40,19 +40,20 @@ export function makeGroups(arr, tamG) {
           
   let arrGroups = [];
   let array = [];
+  const arrayCopy = [...arr];
+  const cantGroups = Math.floor(arr.length/tamG)
           
-  while (arr.length>=tamG) {
+  for (let j = 0; j < cantGroups; j++) {
     for (let i = 0; i < tamG; i++) {
-      let deleted = arr.splice(Math.floor(Math.random() * arr.length),1).toString()
+      let deleted = arrayCopy.splice(Math.floor(Math.random() * arrayCopy.length),1).toString()
       array.push(deleted);
     }
     arrGroups.push(array);
     array = [];
   }
 
-  console.log(arrGroups)
-  if (arr != 0 && arr.length < tamG) {
-    arrGroups.push(arr);
+  if (arrayCopy != 0 && arrayCopy.length < tamG) {
+    arrGroups.push(arrayCopy);
   }
 
   return stringGroups(tamG, arrGroups);
